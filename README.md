@@ -24,9 +24,11 @@ From Source:
 
 __or__
 
-Use `build.sh` to build from source:
-* Run `sh build.sh` and follow the steps in the terminal.
-* This will automatically build the image from source and start the container. When using this the following steps can be ignored.
+Use `build.sh` or `build_interactive.sh` to build from source:
+* Configure `build.sh` with your configuration and run `sh build.sh`.
+__or __
+* Run `build_interactive.sh` and follow the steps in the terminal accordingly.
+* Both steps will automatically build the image from source and start the container. When using this some following steps can be ignored.
 
 #### Initialize Container
 With the help of the image a container can now be created with the following command:
