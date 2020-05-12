@@ -3,7 +3,7 @@ Docker image for [LAREX](https://github.com/OCR4all/LAREX)
 
 ## Getting Started
 
-These instructions will get you a [Docker container](https://www.docker.com/what-container) that runs the project
+These instructions will get you a [Docker container](https://www.docker.com/what-container) that runs LAREX
 
 ### Prerequisites
 
