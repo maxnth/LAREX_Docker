@@ -7,7 +7,7 @@
 DOCKER_NAME="larex"
 
 ## Local path to the directory containing the books
-LAREX_DIR="/home/mn/Desktop/books"
+LAREX_DIR="/books"
 
 ## Port
 PORT=5555
