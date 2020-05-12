@@ -29,7 +29,7 @@ Use `build.sh` or `build_interactive.sh` to build from source:
 
     __or__
 
-* Run `build_interactive.sh` and follow the steps in the terminal accordingly.
+* Run `sh build_interactive.sh` and follow the steps in the terminal accordingly.
 * Both steps will automatically build the image from source and start the container. When using this some following steps can be ignored.
 
 #### Initialize Container
