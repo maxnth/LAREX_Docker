@@ -26,7 +26,9 @@ __or__
 
 Use `build.sh` or `build_interactive.sh` to build from source:
 * Configure `build.sh` with your configuration and run `sh build.sh`.
-__or __
+
+    __or__
+
 * Run `build_interactive.sh` and follow the steps in the terminal accordingly.
 * Both steps will automatically build the image from source and start the container. When using this some following steps can be ignored.
 
