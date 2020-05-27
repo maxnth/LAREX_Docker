@@ -32,7 +32,7 @@ ENTRYPOINT [ "/usr/bin/supervisord" ]
 ARG ARTIFACTORY_URL=http://artifactory-ls6.informatik.uni-wuerzburg.de/artifactory/libs-snapshot/de/uniwue
 
 # Download maven project
-ENV LAREX_VERSION="0.3-RC1"
+ENV LAREX_VERSION="0.3.1"
 RUN cd /var/lib/tomcat9/webapps && \
     wget $ARTIFACTORY_URL/Larex/$LAREX_VERSION/Larex-$LAREX_VERSION.war -O Larex.war
 
