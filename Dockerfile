@@ -36,7 +36,7 @@ RUN rm /usr/lib/jvm/default-java && \
 ARG ARTIFACTORY_URL=http://artifactory-ls6.informatik.uni-wuerzburg.de/artifactory/libs-snapshot/de/uniwue
 
 # Download maven project
-ENV LAREX_VERSION="0.4.0"
+ENV LAREX_VERSION="0.5.0"
 RUN cd /var/lib/tomcat9/webapps && \
     wget $ARTIFACTORY_URL/Larex/$LAREX_VERSION/Larex-$LAREX_VERSION.war -O Larex.war
 
