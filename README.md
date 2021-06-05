@@ -24,7 +24,7 @@ From Source:
 
 __or__
 
-Use `build.sh` or `build_interactive.sh` to build from source:
+Use `build_template.sh` or `build_interactive.sh` to build from source:
 * Configure `build.sh` with your configuration and run `sh build.sh`.
 
     __or__
@@ -37,8 +37,8 @@ With the help of the image a container can now be created with the following com
 ```
 docker run \
     -p 8080:8080 \
-    -u `id -u root`:`id -g $USER` \
     --name <CONTAINER_NAME> \
+    -v <CUSTOM_CONFIG_FILE>:/larex.config \
     -v <LAREX_BOOK_DIR>:/home/books/ \
     -it <IMAGE_NAME>
 ```
@@ -46,23 +46,14 @@ docker run \
 Explanation of variables used above:
 * `<CONTAINER_NAME>` - Name of the Docker container e.g. larex
 * `<IMAGE_NAME>` - Name of the Docker image e.g. maxnth/larex
+* `<CUSTOM_CONFIG_FILE>` - Custom larex.config file (template is included in this repository). Changes to the larex.config will be effective after restarting the docker container (in case one is already running). **`bookpath` should not get changed in the larex.config but only via volumes!**
 * `<LAREX_BOOK_DIR>` - Directory in which the books are located on your local machine
-
-> **IMPORTANT**: The directory containing the books and all subdirectories and files MUST be fully accessible by the user `tomcat9`. 
-Otherwise LAREX won't be able to read the book files and save changes.
->
-> To test if this is the case, run `sudo -u tomcat9 test -r <LAREX_BOOK_DIR>; echo "$?"` and `sudo -u tomcat9 test -w <LAREX_BOOK_DIR>; echo "$?"`. 
-If the output of both commands is `0` you're good to go.
->
-> Otherwise you have to set the user rights via `sudo chown -R tomcat9:tomcat9 <LAREX_BOOK_DIR>`. 
-The user access is often highly dependent on the current location in the filesystem and might not work everywhere as expected, even when granting the user rights to the book dir itself (as parent directories might not grant access to the specified user). 
-Using the root directory or the home directory should work in most cases.
 
 The container will be started by default after executing the `docker run` command.
 
 If you want to start the container again later use `docker ps -a` to list all available containers with their Container IDs and then use `docker start <CONTAINER_NAME>` to start the desired container.
 
-You can now access the project via following URL: http://localhost:8080/Larex/
+You can now access the project via following URL: `http://localhost:<Port>/Larex/`
 
 ### Updating
 #### From Docker Hub:
