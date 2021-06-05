@@ -18,8 +18,8 @@ RUN apt-get update && apt-get install -y \
 RUN cd /usr/local/tomcat/webapps/ && \
     wget $ARTIFACTORY_URL/Larex/$LAREX_VERSION/Larex-$LAREX_VERSION.war -O Larex.war
 
-# Create books path
-RUN mkdir /home/books
+# Create books and savedir path
+RUN mkdir /home/books /home/savedir
 
 # Copy larex.config
 ENV LAREX_CONFIG=/larex.config
