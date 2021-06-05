@@ -25,7 +25,7 @@ From Source:
 __or__
 
 Use `build_template.sh` or `build_interactive.sh` to build from source:
-* Configure `build.sh` with your configuration and run `sh build.sh`.
+* Copy `build_template.sh` to e.g. `build_local.sh`, customize the configuration and run `sh build_local.sh`.
 
     __or__
 
@@ -46,7 +46,7 @@ docker run \
 Explanation of variables used above:
 * `<CONTAINER_NAME>` - Name of the Docker container e.g. larex
 * `<IMAGE_NAME>` - Name of the Docker image e.g. maxnth/larex
-* `<CUSTOM_CONFIG_FILE>` - Custom larex.config file (template is included in this repository). Changes to the larex.config will be effective after restarting the docker container (in case one is already running). **`bookpath` should not get changed in the larex.config but only via volumes!**
+* `<CUSTOM_CONFIG_FILE>` - Custom larex.config file (a template is included in this repository). Changes to the larex.config will be effective after restarting the docker container (in case one is already running). **`bookpath` should not get changed in the larex.config but only via volumes!**
 * `<LAREX_BOOK_DIR>` - Directory in which the books are located on your local machine
 
 The container will be started by default after executing the `docker run` command.
