@@ -10,7 +10,10 @@ read -p "Enter container name: " CONTAINER_NAME
 read -p "Enter image name: " IMAGE_NAME
 
 ## Local path to the directory containing the books
-read -p "Enter local book directory: " LAREX_DIR
+read -p "Enter local book directory: " BOOK_DIR
+
+## Local path to the save dir. Ignored if empty
+read -p "Enter local save directory. Leave empty if not used: " SAVE_DIR
 
 ## Configuration file
 read -p "Enter path to configuration file: " CONFIG_FILE
@@ -33,10 +36,21 @@ fi
 
 ## Build and start container
 docker build -t ${IMAGE_NAME} . && \
-docker run \
-    -p ${PORT}:8080 \
-    -u `id -u root`:`id -g $USER` \
-    --name ${CONTAINER_NAME} \
-    -v ${CONFIG_FILE}:/larex.config \
-    -v ${LAREX_DIR}:/home/books/ \
-    -it ${IMAGE_NAME}
+if [ -z "$SAVE_DIR" ]
+then
+      docker run \
+        -p ${PORT}:8080 \
+        --name ${DOCKER_NAME} \
+        -v ${CONFIG_FILE}:/larex.config \
+        -v ${BOOK_DIR}:/home/books/ \
+        -it ${IMAGE_NAME}
+
+else
+      docker run \
+        -p ${PORT}:8080 \
+        --name ${DOCKER_NAME} \
+        -v ${CONFIG_FILE}:/larex.config \
+        -v ${BOOK_DIR}:/home/books/ \
+        -v ${SAVE_DIR}:/home/savedir \
+        -it ${IMAGE_NAME}
+fi
