@@ -10,7 +10,10 @@ DOCKER_NAME="larex"
 IMAGE_NAME="larex"
 
 ## Local path to the directory containing the books
-LAREX_DIR="/books"
+LAREX_DIR="/Path/to/books"
+
+## Local path to the custom configuration file
+CONFIG_FILE="/Path/to/larex.config"
 
 ## Port
 PORT=5555
@@ -25,7 +28,7 @@ fi
 docker build -t ${IMAGE_NAME} . && \
 docker run \
     -p ${PORT}:8080 \
-    -u `id -u root`:`id -g $USER` \
     --name ${DOCKER_NAME} \
+    -v ${CONFIG_FILE}:/larex.config \
     -v ${LAREX_DIR}:/home/books/ \
     -it ${IMAGE_NAME}
