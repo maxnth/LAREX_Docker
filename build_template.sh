@@ -4,7 +4,7 @@
 ########################################################
 
 ## Container name (must be lower case)
-DOCKER_NAME="larex"
+CONTAINER_NAME="larex"
 
 ## Image name
 IMAGE_NAME="larex"
@@ -17,7 +17,7 @@ BOOK_DIR="/Path/to/books"
 SAVE_DIR=""
 
 ## Local path to the custom configuration file
-CONFIG_FILE="/Path/to/larex.config"
+CONFIG_FILE="/Path/to/larex.properties"
 
 ## Port
 PORT=5555
@@ -37,6 +37,7 @@ then
         --name ${DOCKER_NAME} \
         -v ${CONFIG_FILE}:/default.properties \
         -v ${BOOK_DIR}:/home/books/ \
+        -v ${SAVE_DIR}:/home/savedir \
         -it ${IMAGE_NAME}
 
 else
