@@ -36,18 +36,20 @@ Use `build_template.sh` or `build_interactive.sh` to build from source:
 With the help of the image a container can now be created with the following command:
 ```
 docker run \
-    -p 8080:8080 \
+    -p <LOCAL_PORT>:8080 \
     --name <CONTAINER_NAME> \
-    -v <CUSTOM_CONFIG_FILE>:/larex.config \
-    -v <LAREX_BOOK_DIR>:/home/books/ \
+    -v <CONFIG_FILE>:/larex.properties \
+    -v <BOOK_DIR>:/home/books/ \
+    -v <SAVE_DIR>:/home/savedir \
     -it <IMAGE_NAME>
 ```
 
 Explanation of variables used above:
-* `<CONTAINER_NAME>` - Name of the Docker container e.g. larex
-* `<IMAGE_NAME>` - Name of the Docker image e.g. maxnth/larex
-* `<CUSTOM_CONFIG_FILE>` - Custom larex.config file (a template is included in this repository). Changes to the larex.config will be effective after restarting the docker container (in case one is already running). **`bookpath` should not get changed in the larex.config but only via volumes!**
-* `<LAREX_BOOK_DIR>` - Directory in which the books are located on your local machine
+* `<CONTAINER_NAME>` - Name of the Docker container e.g. `larex`
+* `<CONFIG_FILE>` - Custom larex.properties file (a template is included in this repository). Changes to the larex.properties will be effective after restarting the docker container (in case one is already running). **`bookpath` should not get changed in the larex.properties but only via volumes (unless you change the variables in the Dockerfile as well)!**
+* `<BOOK_DIR>` - Directory in which the books are located on your local machine
+* `<SAVE_DIR>`- Directory in which the results are saved. Defaults to `<BOOK_DIR>` if not set
+* `<IMAGE_NAME>` - Name of the Docker image e.g. `maxnth/larex`
 
 The container will be started by default after executing the `docker run` command.
 
@@ -64,13 +66,3 @@ The following command will update the image:
 ```
 docker pull maxnth/larex
 ```
-
-#### From Source:
-
-To update the source code of the project you currently need to reinstall the image.
-
-This can be achieved with executing the following command first:
-```
-docker image rm <IMAGE_NAME>
-```
-Afterwards you can follow the installation guide above as it is a new clean installation.
